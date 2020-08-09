@@ -1,6 +1,6 @@
 package com.renanzulian.quakeparser;
 
-public class Player {
+class Player {
     private int id;
     private String name;
     private int kills;
