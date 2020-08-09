@@ -2,14 +2,11 @@ package com.renanzulian.quakeparser;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.Random;
-
 import com.github.javafaker.Faker;
 
 import org.junit.Test;
 
 public class PlayerTest {
-    Random random = new Random();
     Faker faker = new Faker();
 
     private Player playerFactory() {

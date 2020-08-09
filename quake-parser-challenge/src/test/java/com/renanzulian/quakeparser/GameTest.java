@@ -1,4 +1,5 @@
 package com.renanzulian.quakeparser;
 
-public class Game {
+public class GameTest {
+    
 }
