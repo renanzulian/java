@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class App 
 {
     public static void main( String[] args ) throws FileNotFoundException {
-        File source = new File("/home/renanferreira/Desktop/java/quake-parser-challenge/games.log");
+        File source = new File("/home/renan/Desktop/java/quake-parser-challenge/games.log");
         Scanner sc = new Scanner(source);
 
         while (sc.hasNextLine()) {
