@@ -19,7 +19,7 @@ public class GameTest {
     }
 
     private Game gameFactory() {
-        int quantityPlayers = faker.random().nextInt(5, 20);
+        int quantityPlayers = faker.random().nextInt(10, 20);
         return this.gameFactory(quantityPlayers);
     }
 
@@ -44,5 +44,24 @@ public class GameTest {
         Player player = game.findPlayer(randomId);
         assertTrue(player.getId() == randomId);
         assertTrue(player.getName() == "Unknown");
+    }
+
+    @Test
+    public void shouldSaveKills() {
+        int player1Id = faker.random().nextInt(1, 5);
+        int player2Id = faker.random().nextInt(6, 10);
+        int worldPlayer = 1022;
+        int rounds = faker.random().nextInt(10);
+        Game game = this.gameFactory();
+        for (int i = 0; i < rounds; i++) {
+            game.addKill(player1Id, player2Id);
+            game.addKill(player2Id, player1Id);
+            game.addKill(player2Id, worldPlayer);
+        }
+        Player player1 = game.findPlayer(player1Id);
+        Player player2 = game.findPlayer(player2Id);
+        assertTrue(player1.getKills() == rounds);
+        assertTrue(player2.getKills() == 0);
+        assertTrue(game.getKills() == rounds*3);
     }
 }

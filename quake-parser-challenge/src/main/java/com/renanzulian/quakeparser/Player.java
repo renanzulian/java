@@ -35,4 +35,8 @@ class Player {
     public void addKill() {
         this.kills++;
     }
+
+    public void removeKill() {
+        this.kills--;
+    }
 }

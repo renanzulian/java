@@ -1,8 +1,7 @@
 package com.renanzulian.quakeparser;
 
 import java.util.ArrayList;
-
-public class Game {
+class Game {
     private int id;
     private int kills;
     private ArrayList<Player> players;
@@ -21,7 +20,14 @@ public class Game {
         return kills;
     }
 
-    public void addKill(int kills) {
+    public void addKill(int deadId, int killerId) {
+        if (killerId == 1022) {
+            Player dead = this.findPlayer(deadId);
+            dead.removeKill();
+        } else {
+            Player killer = this.findPlayer(killerId);
+            killer.addKill(); 
+        }
         this.kills++;
     }
 
