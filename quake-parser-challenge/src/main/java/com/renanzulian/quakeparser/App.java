@@ -18,7 +18,8 @@ public class App
 
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
-            App.getEvent(line);
+            String[] event = App.getEvent(line);
+            System.out.println(event[1]);
         }
         
         sc.close();
@@ -31,10 +32,11 @@ public class App
         if (matcher.find()){
             String[] result = new String[2];
             result[0] = matcher.group(1);
-            result[1] = pattern.split(line)[1]
+            result[1] = pattern.split(line)[1];
             return result;
         } else {
             System.out.println("Event not found.");
+            return null;
         }
     }
 }
