@@ -1,5 +1,6 @@
 package com.renanzulian.quakeparser;
 
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -79,4 +80,21 @@ public class GameTest {
         assertTrue(game.toString().contains("kills: 3"));
         assertTrue(game.toString().contains("Unknown: 1"));
     }
+
+    @Test
+    public void shouldDisconnectPlayers() {
+        Game game = this.gameFactory();
+        int playerId = faker.random().nextInt(10);
+        String playerName = faker.name().firstName(); 
+        Player player = game.findPlayer(playerId);
+        player.setName(playerName);
+        int playerOnInit = game.getPlayers().size();
+        game.toDisconnectPlayer(playerId);
+        assertTrue(game.findPlayer(playerId) == null);
+        assertTrue(playerOnInit == game.getPlayers().size() + 1);
+        game.toReconnectPlayer(player.getName());
+        assertTrue(playerOnInit == game.getPlayers().size());
+        assertSame(player, game.findPlayer(playerId));
+    }
+
 }

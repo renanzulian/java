@@ -4,12 +4,14 @@ import java.util.ArrayList;
 class Game {
     private int id;
     private int kills;
-    private ArrayList<Player> players;
+    private ArrayList<Player> activePlayers;
+    private ArrayList<Player> deactivePlayers;
 
     Game(int id){
         this.id = id;
         this.kills = 0;
-        players = new ArrayList<Player>();
+        activePlayers = new ArrayList<Player>();
+        deactivePlayers = new ArrayList<Player>();
     }
 
     public int getId() {
@@ -32,23 +34,23 @@ class Game {
     }
 
     public ArrayList<Player> getPlayers() {
-        return players;
+        return activePlayers;
     }
 
     public void addPlayer(int playerId) {
-        this.players.add(new Player(playerId));
+        this.activePlayers.add(new Player(playerId));
     }
 
     public Player findPlayer(int id) {
-        return this.players.stream()
+        return this.activePlayers.stream()
             .filter(p -> p.getId() == id)
             .findAny()
             .orElse(null);
     }
 
-    public Player findPlayer(String name) {
-        return this.players.stream()
-            .filter(p -> p.getName() == name)
+    public Player findDeactivePlayer(String playerName) {
+        return this.deactivePlayers.stream()
+            .filter(p -> p.getName() == playerName)
             .findAny()
             .orElse(null);
     }
@@ -57,10 +59,32 @@ class Game {
     public String toString() {
         String gameData = String.format("game_%d:\n\tkills: %d\n\tscores: \n", this.getId(), this.getKills());
         String playerData = new String();
-        for (Player player : this.players) {
+        for (Player player : this.activePlayers) {
             playerData += String.format("\t\t%s\n", player.toString());
         }
         return gameData + playerData;
+    }
+
+    public void toDisconnectPlayer(int playerId) {
+        Player player = this.findPlayer(playerId);
+        if (player != null) {
+            this.activePlayers.remove(player);
+            this.deactivePlayers.add(player);
+        } else {
+            System.out.println(String.format("Player %d not found.", playerId));
+        }
+        
+    }
+
+    public void toReconnectPlayer(String playerName) {
+        Player player = this.findDeactivePlayer(playerName);
+        if (player != null) {
+            this.deactivePlayers.remove(player);
+            this.activePlayers.add(player);
+        } else {
+            System.out.println(String.format("Player %s not found.", playerName));
+        }
+        
     }
 
 }
