@@ -35,8 +35,8 @@ class Game {
         return players;
     }
 
-    public void addPlayer(Player player) {
-        this.players.add(player);
+    public void addPlayer(int playerId) {
+        this.players.add(new Player(playerId));
     }
 
     public Player findPlayer(int id) {
@@ -51,6 +51,16 @@ class Game {
             .filter(p -> p.getName() == name)
             .findAny()
             .orElse(null);
+    }
+
+    @Override
+    public String toString() {
+        String gameData = String.format("game_%d:\n\tkills: %d\n\tscores: \n", this.getId(), this.getKills());
+        String playerData = new String();
+        for (Player player : this.players) {
+            playerData += String.format("\t\t%s\n", player.toString());
+        }
+        return gameData + playerData;
     }
 
 }

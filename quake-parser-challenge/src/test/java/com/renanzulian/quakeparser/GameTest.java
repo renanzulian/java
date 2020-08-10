@@ -1,5 +1,6 @@
 package com.renanzulian.quakeparser;
 
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import com.github.javafaker.Faker;
@@ -13,7 +14,7 @@ public class GameTest {
         int randomId = faker.random().nextInt(100);
         Game game = new Game(randomId);
         for (int i = 0; i < numberOfPlayers; i++) {
-            game.addPlayer(new Player(i));
+            game.addPlayer(i);
         }
         return game;
     }
@@ -63,5 +64,19 @@ public class GameTest {
         assertTrue(player1.getKills() == rounds);
         assertTrue(player2.getKills() == 0);
         assertTrue(game.getKills() == rounds*3);
+    }
+
+    @Test
+    public void gameResultShouldBeFormatted() {
+        Game game = this.gameFactory();
+        int player1Id = faker.random().nextInt(1, 5);
+        int player2Id = faker.random().nextInt(6, 10);
+        int worldPlayer = 1022;
+        game.addKill(player2Id, player1Id);
+        game.addKill(player1Id, player2Id);
+        game.addKill(player2Id, worldPlayer);
+        assertTrue(game.toString().contains(String.format("game_%d", game.getId())));
+        assertTrue(game.toString().contains("kills: 3"));
+        assertTrue(game.toString().contains("Unknown: 1"));
     }
 }

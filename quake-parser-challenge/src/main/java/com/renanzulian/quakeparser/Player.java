@@ -39,4 +39,9 @@ class Player {
     public void removeKill() {
         this.kills--;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s: %d", this.getName(), this.getKills());
+    }
 }

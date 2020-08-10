@@ -1,5 +1,6 @@
 package com.renanzulian.quakeparser;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.github.javafaker.Faker;
@@ -40,5 +41,17 @@ public class PlayerTest {
 
         player.setName(randomName);
         assertTrue(player.getName() == randomName);
+    }
+
+    @Test
+    public void playerResultShouldBeFormatted() {
+        Player player = this.playerFactory();
+        String name = faker.name().firstName();
+        player.setName(name);
+        player.addKill();
+        player.addKill();
+        player.addKill();
+        String playerResult = name + ": " + String.valueOf(player.getKills());
+        assertEquals(playerResult, player.toString());
     }
 }
