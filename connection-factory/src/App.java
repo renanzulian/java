@@ -1,23 +1,21 @@
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.util.Calendar;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Connection conn = new ConnectionFactory().getConnection();
-        System.out.println("Database connected!");
-        String query = "INSERT INTO contatos"+
-        " (nome, email, endereco, dataNascimento)"+
-        " values(?, ?, ?, ?)";
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1, "Renan");
-        stmt.setString(2, "renanzulian@gmail.com");
-        stmt.setString(3, "rua jose dos santos 19");
-        stmt.setDate(4, new Date(Calendar.getInstance().getTimeInMillis()));
-        stmt.execute();
-        stmt.close();
-        System.out.println("Contato has been saved!");
-        conn.close();
+        Scanner scann = new Scanner(System.in);
+        Contato contato = new Contato();
+        System.out.println("Insira o nome do usuário: ");
+        String name = scann.nextLine();
+        contato.setName(name);
+        System.out.println("Insira o endereço do usuário: ");
+        String endereco = scann.nextLine();
+        contato.setEndereco(endereco);
+        System.out.println("Insira o email do usuário: ");
+        String email = scann.next();
+        contato.setEmail(email);
+        ContatoDao dao = new ContatoDao();
+        dao.salvarContato(contato);
+        dao.closeConnection();
+        scann.close();
     }
 }
