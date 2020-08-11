@@ -2,5 +2,6 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/home/renanferreira/Desktop/java/connection-factory/**/*.jar"
-    ]
+    ],
+    "spring-boot.ls.checkJVM": false
 }
