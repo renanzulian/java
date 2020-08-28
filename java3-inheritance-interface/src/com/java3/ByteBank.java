@@ -3,6 +3,7 @@ package com.java3;
 import com.java3.accounts.CurrentAccount;
 import com.java3.accounts.SavingAccount;
 import com.java3.people.BonusController;
+import com.java3.people.Developer;
 import com.java3.people.Employee;
 import com.java3.people.Manager;
 
@@ -25,7 +26,7 @@ public class ByteBank {
         manager.setName("John");
         manager.setSalary(2300.00);
 
-        Employee employee = new Employee();
+        Employee employee = new Developer();
         employee.setName("Paul");
         employee.setSalary(1050.00);
 

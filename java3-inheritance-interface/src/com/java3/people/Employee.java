@@ -1,14 +1,12 @@
 package com.java3.people;
 
-public class Employee {
+public abstract class Employee {
 
     protected String name;
     protected String cpf;
     protected double salary;
 
-    public double getBonus() {
-        return this.salary * 0.1;
-    }
+    public abstract double getBonus();
 
     public String getName() {
         return name;
