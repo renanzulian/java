@@ -1,5 +1,9 @@
 package com.java3;
 
+import com.java3.people.BonusController;
+import com.java3.people.Employee;
+import com.java3.people.Manager;
+
 public class ByteBank {
     public static void main(String[] args) {
         Manager manager = new Manager();

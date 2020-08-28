@@ -1,4 +1,4 @@
-package com.java3;
+package com.java3.people;
 
 public class Employee {
 

@@ -1,4 +1,6 @@
-package com.java3;
+package com.java3.people;
+
+import com.java3.people.Employee;
 
 public class BonusController {
 
