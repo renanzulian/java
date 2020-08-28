@@ -52,4 +52,9 @@ public class Account {
         return 0.0;
     }
 
+    public void toTransfer(double value, Account target) {
+        double retiredValue = this.withdraw(value);
+        target.toDeposit(retiredValue);
+    }
+
 }
