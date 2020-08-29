@@ -1,23 +1,23 @@
 package com.java3.people;
 
+import com.java3.systems.FinancialSystemAccess;
+
 public class Accountant extends Employee implements FinancialAccess {
 
-    private String password;
+    FinancialSystemAccess access;
 
-
-    @Override
-    public String getPassword() {
-        return this.password;
+    public Accountant() {
+        access = new FinancialSystemAccess();
     }
 
     @Override
     public void setPassword(String password) {
-        this.password = password;
+        this.access.setPassword(password);
     }
 
     @Override
     public boolean toAuthenticate(String password) {
-        return this.password.equals(password);
+        return this.access.toAuthenticate(password);
     }
 
     @Override

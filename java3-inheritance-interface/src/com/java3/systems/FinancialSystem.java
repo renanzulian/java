@@ -17,7 +17,7 @@ public class FinancialSystem {
     }
 
     private boolean isAuthenticated(FinancialAccess user) {
-        return this.systemPassword.equals(user.getPassword());
+        return user.toAuthenticate(this.systemPassword);
     }
 
 }

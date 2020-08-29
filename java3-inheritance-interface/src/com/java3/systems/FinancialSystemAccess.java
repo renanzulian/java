@@ -1,19 +1,18 @@
-package com.java3.people;
+package com.java3.systems;
 
-public abstract class TrustPosition extends Employee {
+public class FinancialSystemAccess {
 
     private String password;
-
-    public String getPassword() {
-        return password;
-    }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public boolean toAuthenticate(String password) {
         return this.password.equals(password);
     }
-
 }
