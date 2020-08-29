@@ -12,13 +12,16 @@ public class ByteBank {
 
         FinancialSystem fSystem = new FinancialSystem();
 
-        Manager manager = new Manager();
+        FinancialAccess manager = new Manager();
         manager.setPassword("12345");
-        Accountant accountant = new Accountant();
+        FinancialAccess accountant = new Accountant();
         accountant.setPassword("1234");
+        FinancialAccess fiscal = new Fiscal();
+        fiscal.setPassword("12345");
 
         fSystem.toAccess(manager);
         fSystem.toAccess(accountant);
+        fSystem.toAccess(fiscal);
 
     }
 
