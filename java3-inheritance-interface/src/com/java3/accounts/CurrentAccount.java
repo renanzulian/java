@@ -1,6 +1,6 @@
 package com.java3.accounts;
 
-public class CurrentAccount extends Account {
+public class CurrentAccount extends Account implements Taxable {
 
     private final double withdrawCost = 0.80;
 
@@ -16,5 +16,10 @@ public class CurrentAccount extends Account {
             return withdrawMoney - this.withdrawCost;
         }
         return withdrawMoney;
+    }
+
+    @Override
+    public double getTax() {
+        return super.getBalance() * 0.05;
     }
 }

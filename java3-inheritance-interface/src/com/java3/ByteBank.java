@@ -1,7 +1,9 @@
 package com.java3;
 
 import com.java3.accounts.CurrentAccount;
+import com.java3.accounts.LifeInsurance;
 import com.java3.accounts.SavingAccount;
+import com.java3.accounts.TaxCalculator;
 import com.java3.people.*;
 import com.java3.systems.FinancialSystem;
 
@@ -9,7 +11,21 @@ public class ByteBank {
     public static void main(String[] args) {
 //        createEmployers();
 //        createAccounts();
+//        employersWithInterface();
 
+        CurrentAccount cc = new CurrentAccount(1);
+        cc.toDeposit(1000);
+        LifeInsurance li = new LifeInsurance();
+
+        TaxCalculator calculator = new TaxCalculator();
+
+        calculator.addTax(cc);
+        calculator.addTax(li);
+        System.out.println(calculator.getTotalTax());
+
+    }
+
+    private static void employersWithInterface() {
         FinancialSystem fSystem = new FinancialSystem();
 
         FinancialAccess manager = new Manager();
@@ -22,7 +38,6 @@ public class ByteBank {
         fSystem.toAccess(manager);
         fSystem.toAccess(accountant);
         fSystem.toAccess(fiscal);
-
     }
 
     private static void createAccounts() {
