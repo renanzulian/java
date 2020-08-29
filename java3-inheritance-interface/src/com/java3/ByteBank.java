@@ -2,14 +2,27 @@ package com.java3;
 
 import com.java3.accounts.CurrentAccount;
 import com.java3.accounts.SavingAccount;
-import com.java3.people.BonusController;
-import com.java3.people.Developer;
-import com.java3.people.Employee;
-import com.java3.people.Manager;
+import com.java3.people.*;
+import com.java3.systems.FinancialSystem;
 
 public class ByteBank {
     public static void main(String[] args) {
 //        createEmployers();
+//        createAccounts();
+
+        FinancialSystem fSystem = new FinancialSystem();
+
+        Manager manager = new Manager();
+        manager.setPassword("12345");
+        Accountant accountant = new Accountant();
+        accountant.setPassword("1234");
+
+        fSystem.toAccess(manager);
+        fSystem.toAccess(accountant);
+
+    }
+
+    private static void createAccounts() {
         CurrentAccount cc = new CurrentAccount(1010);
         SavingAccount sc = new SavingAccount(1010);
 
@@ -18,7 +31,6 @@ public class ByteBank {
 
         System.out.println("Current Account has $" + cc.getBalance());
         System.out.println("Saving Account has $" + sc.getBalance());
-
     }
 
     private static void createEmployers() {
