@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<hello-world>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.renanzulian.helloworld.DemoApplication",
+            "projectName": "hello-world",
+            "args": ""
+        }
+    ]
+}
