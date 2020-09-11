@@ -20,7 +20,7 @@ public class Flow {
 
     private static void methodTwo() {
         System.out.println("Init methodTwo");
-        throw new ArithmeticException("it should stop");
+        throw new MyOwnException("it should stop");
 //        System.out.println("End methodTwo");
     }
 }
