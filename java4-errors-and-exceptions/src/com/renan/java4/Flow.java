@@ -20,10 +20,7 @@ public class Flow {
 
     private static void methodTwo() {
         System.out.println("Init methodTwo");
-        for (int i = 1; i < 6; i++) {
-            System.out.println(i);
-            int var = i/0;
-        }
-        System.out.println("End methodTwo");
+        throw new ArithmeticException("it should stop");
+//        System.out.println("End methodTwo");
     }
 }
