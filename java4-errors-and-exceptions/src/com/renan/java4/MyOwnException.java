@@ -1,6 +1,6 @@
 package com.renan.java4;
 
-public class MyOwnException extends RuntimeException {
+public class MyOwnException extends Exception {
 
     public MyOwnException() {
     }

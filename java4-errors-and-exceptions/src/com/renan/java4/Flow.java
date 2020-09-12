@@ -18,7 +18,7 @@ public class Flow {
         System.out.println("End methodOne");
     }
 
-    private static void methodTwo() {
+    private static void methodTwo() throws Exception {
         System.out.println("Init methodTwo");
         throw new MyOwnException("it should stop");
 //        System.out.println("End methodTwo");
