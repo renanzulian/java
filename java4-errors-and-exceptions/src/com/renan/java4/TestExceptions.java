@@ -13,7 +13,6 @@ public class TestExceptions {
         } catch (Exception ex) {
             System.out.println("Catching a checked error");
         }
-
     }
 
     private static void getCheckedMethod() throws CheckedException {
